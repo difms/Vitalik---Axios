@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitalik Media - Креативный видеопродакшн полного цикла</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">VITALIK</span>
+                <span class="logo-subtitle">MEDIA</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Главная</a>
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#portfolio" class="nav-link">Портфолио</a>
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#contact" class="nav-link">Контакты</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой-секция -->
+    <section id="home" class="hero">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline>
+                <source src="ax-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>КРЕАТИВНЫЙ ПРОДАКШН</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">Создаём</span>
+                <span class="title-line highlight">визуальные</span>
+                <span class="title-line">шедевры</span>
+            </h1>
+            <p class="hero-description">
+                Реклама, клипы и фильмы, которые захватывают внимание и оставляют незабываемые впечатления
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Заказать проект</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#portfolio" class="btn btn-secondary">
+                    <span>Смотреть работы</span>
+                    <i class="fas fa-play"></i>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Прокрутите вниз</span>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">О КОМПАНИИ</span>
+                <h2 class="section-title">Мы делаем истории без срока годности</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">
+                        Мы — команда профессионалов с опытом в создании рекламы для брендов,
+                        музыкальных клипов для артистов и художественных фильмов.
+                    </p>
+                    <p>
+                        Используем передовое оборудование, креативные идеи и федеральный уровень
+                        качества по выгодной для клиента цене.
+                    </p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Проектов</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Лет опыта</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Качество</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-video"></i>
+                        <span>Наша команда в работе</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">ПОРТФОЛИО</span>
+                <h2 class="section-title">Наши лучшие работы</h2>
+            </div>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="advertising">Реклама</button>
+                <button class="filter-btn" data-filter="music">Клипы</button>
+                <button class="filter-btn" data-filter="films">Фильмы</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="advertising">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Реклама бренда</h3>
+                            <p>Креативная рекламная кампания</p>
+                            <a href="#" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="music">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Музыкальный клип</h3>
+                            <p>Клип для популярного артиста</p>
+                            <a href="#" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="films">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Художественный фильм</h3>
+                            <p>Полнометражный игровой фильм</p>
+                            <a href="#" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="advertising">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>E-commerce реклама</h3>
+                            <p>Реклама для интернет-магазина</p>
+                            <a href="#" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="music">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Концертная съёмка</h3>
+                            <p>Запись живого выступления</p>
+                            <a href="#" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="films">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <h3>Документальный фильм</h3>
+                            <p>Короткометражный документальный проект</p>
+                            <a href="#" class="portfolio-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">УСЛУГИ</span>
+                <h2 class="section-title">Что мы делаем</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Реклама и промо</h3>
+                    <p>Создаём креативную рекламу, которая продаёт и запоминается</p>
+                    <ul>
+                        <li>ТВ-реклама</li>
+                        <li>Digital-контент</li>
+                        <li>Промо-ролики</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Музыкальные клипы</h3>
+                    <p>Визуализируем музыку и создаём незабываемые образы</p>
+                    <ul>
+                        <li>Песенные клипы</li>
+                        <li>Концертные записи</li>
+                        <li>Музыкальные видео</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Художественные фильмы</h3>
+                    <p>Полный цикл производства от идеи до готового фильма</p>
+                    <ul>
+                        <li>Короткометражки</li>
+                        <li>Полнометражные фильмы</li>
+                        <li>Документалистика</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Постпродакшн</h3>
+                    <p>Монтаж, цветокоррекция, графика и звук</p>
+                    <ul>
+                        <li>Монтаж видео</li>
+                        <li>Цветокоррекция</li>
+                        <li>Motion Graphics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">КОНТАКТЫ</span>
+                <h2 class="section-title">Давайте создадим что-то крутое вместе</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Телефон</h4>
+                            <p>+7 (XXX) XXX-XX-XX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>info@vitalikmedia.ru</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Адрес</h4>
+                            <p>Москва, Россия</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Ваше имя</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone">
+                        <label for="phone">Телефон</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" name="service" required>
+                            <option value="">Выберите услугу</option>
+                            <option value="advertising">Реклама</option>
+                            <option value="music">Музыкальный клип</option>
+                            <option value="film">Фильм</option>
+                            <option value="post">Постпродакшн</option>
+                        </select>
+                        <label for="service">Тип проекта</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">Расскажите о вашем проекте</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Отправить заявку</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">VITALIK</span>
+                    <span class="logo-subtitle">MEDIA</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Главная</a>
+                    <a href="#about">О нас</a>
+                    <a href="#portfolio">Портфолио</a>
+                    <a href="#services">Услуги</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vitalik Media. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Фильтры портфолио
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Убираем активный класс со всех кнопок
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Добавляем активный класс к нажатой кнопке
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за элементами
+        document.querySelectorAll('.service-card, .portfolio-item, .contact-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
