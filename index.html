@@ -10,6 +10,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
@@ -26,6 +29,14 @@
                     <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
                     <li><a href="#contact" class="nav-link">Контакты</a></li>
                 </ul>
+                <div class="nav-controls">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="language-toggle" id="language-toggle" aria-label="Переключить язык">
+                        <span>RU</span>
+                    </button>
+                </div>
                 <button class="nav-toggle" id="nav-toggle">
                     <span></span>
                     <span></span>
@@ -38,11 +49,25 @@
     <!-- Герой -->
     <section id="hero" class="hero">
         <div class="hero-video">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline preload="metadata" loading="lazy">
                 <source src="AxionShowReel2017.mp4" type="video/mp4">
+                <source src="AxionShowReel2017.webm" type="video/webm">
             </video>
             <div class="hero-overlay"></div>
+            <div class="video-controls">
+                <button class="video-play-pause" aria-label="Пауза/Воспроизведение">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <div class="video-progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <button class="video-mute" aria-label="Включить/Выключить звук">
+                    <i class="fas fa-volume-mute"></i>
+                </button>
+            </div>
         </div>
+        <!-- 3D Background Elements -->
+        <div class="hero-3d-bg" id="hero-3d-bg"></div>
         <div class="hero-content">
             <div class="hero-badge">
                 <span>КРЕАТИВНЫЙ ПРОДАКШН</span>
@@ -88,16 +113,23 @@
                 <button class="filter-btn" data-filter="film">Кино</button>
             </div>
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="advertising">
+                <div class="portfolio-item" data-category="advertising" data-aos="fade-up" data-aos-delay="100">
                     <div class="portfolio-image">
-                        <img src="1.png" alt="Инвестиционные проекты">
+                        <img src="1.png" alt="Инвестиционные проекты" loading="lazy">
                         <div class="portfolio-overlay">
-                            <h3>Инвестиционные проекты</h3>
-                            <p>Обоснование инвестиционных проектов</p>
-                            <a href="project-1.html" class="portfolio-link">
-                                <i class="fas fa-external-link-alt"></i>
+                            <div class="overlay-content">
+                                <h3>Инвестиционные проекты</h3>
+                                <p>Обоснование инвестиционных проектов</p>
+                                <div class="portfolio-stats">
+                                    <span class="stat"><i class="fas fa-clock"></i> 2 мин</span>
+                                    <span class="stat"><i class="fas fa-eye"></i> 4K</span>
+                                </div>
+                            </div>
+                            <a href="project-1.html" class="portfolio-link" aria-label="Посмотреть проект">
+                                <i class="fas fa-play"></i>
                             </a>
                         </div>
+                        <div class="portfolio-hover-effect"></div>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="music">
@@ -153,7 +185,7 @@
     </section>
 
     <!-- Контакты -->
-    <section id="contact" class="contact">
+    <!-- <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">КОНТАКТЫ</span>
@@ -209,7 +241,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Футер -->
     <footer class="footer">
@@ -238,6 +270,34 @@
     </footer>
 
     <script>
+        // Инициализация GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Тёмный режим
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Проверяем сохранённую тему или системные настройки
+        const savedTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const currentTheme = savedTheme || systemTheme;
+
+        body.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
         // Мобильное меню
         const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.getElementById('nav-menu');
@@ -325,29 +385,138 @@
             }
         });
 
-        // Эффект частиц при движении мыши
+        // GSAP анимации
+        gsap.timeline()
+            .from('.hero-badge', { opacity: 0, y: 50, duration: 1, ease: 'power3.out' })
+            .from('.hero-title .title-line', { opacity: 0, y: 100, duration: 1, stagger: 0.2, ease: 'power3.out' }, '-=0.5')
+            .from('.hero-description', { opacity: 0, y: 30, duration: 0.8, ease: 'power2.out' }, '-=0.3')
+            .from('.hero-buttons', { opacity: 0, y: 30, duration: 0.8, ease: 'power2.out' }, '-=0.3');
+
+        // ScrollTrigger анимации
+        gsap.utils.toArray('.portfolio-item').forEach((item, index) => {
+            gsap.fromTo(item,
+                { opacity: 0, y: 100, scale: 0.8 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+
+        // 3D Background
+        init3DBackground();
+
+        function init3DBackground() {
+            const container = document.getElementById('hero-3d-bg');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Создаём плавающие частицы
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 1000;
+            const posArray = new Float32Array(particlesCount * 3);
+
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 10;
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.005,
+                color: 0x00ffff,
+                transparent: true,
+                opacity: 0.6
+            });
+
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            camera.position.z = 5;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                particlesMesh.rotation.x += 0.001;
+                particlesMesh.rotation.y += 0.002;
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // Обработка изменения размера окна
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // Умные видео с Intersection Observer
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('video').forEach(video => {
+            videoObserver.observe(video);
+        });
+
+        // Эффект частиц при движении мыши (улучшенный)
+        let mouseX = 0, mouseY = 0;
         document.addEventListener('mousemove', (e) => {
-            createParticle(e.clientX, e.clientY);
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            if (Math.random() > 0.95) { // Ограничиваем количество частиц
+                createParticle(e.clientX, e.clientY);
+            }
         });
 
         function createParticle(x, y) {
             const particle = document.createElement('div');
+            particle.className = 'particle';
             particle.style.position = 'fixed';
             particle.style.left = x + 'px';
             particle.style.top = y + 'px';
-            particle.style.width = '4px';
-            particle.style.height = '4px';
-            particle.style.background = 'rgba(0, 255, 255, 0.6)';
+            particle.style.width = '3px';
+            particle.style.height = '3px';
+            particle.style.background = `hsl(${Math.random() * 60 + 180}, 100%, 50%)`;
             particle.style.borderRadius = '50%';
             particle.style.pointerEvents = 'none';
             particle.style.zIndex = '9999';
-            particle.style.animation = 'matrixRain 2s linear forwards';
+            particle.style.boxShadow = '0 0 10px currentColor';
 
             document.body.appendChild(particle);
 
-            setTimeout(() => {
-                particle.remove();
-            }, 2000);
+            gsap.to(particle, {
+                y: y - 100,
+                opacity: 0,
+                scale: 0,
+                duration: 1,
+                ease: 'power2.out',
+                onComplete: () => particle.remove()
+            });
         }
 
         // Эффект магнитного притяжения для кнопок
